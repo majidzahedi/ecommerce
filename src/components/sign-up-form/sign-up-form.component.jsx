@@ -55,7 +55,7 @@ const SignUp = () => {
         <FormInput
           type="text"
           name="displayName"
-          label="displayName"
+          label="display name"
           onChange={handleChange}
           value={displayName}
           required
@@ -82,7 +82,7 @@ const SignUp = () => {
         <FormInput
           type="password"
           name="confirmPassword"
-          label="confirmPassword"
+          label="confirm password"
           onChange={handleChange}
           value={confirmPassword}
           required
