@@ -1,7 +1,8 @@
+import SignUp from "../../components/sign-up-form/sign-up-form.jsx";
 const SignIn = () => {
   return (
     <div>
-      <h1>This is Sign in page</h1>
+      <SignUp />
     </div>
   );
 };
