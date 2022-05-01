@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../features/user/userSlice";
 
 import CrwnLogo from "../../assets/crown.svg?component";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
@@ -29,6 +30,7 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
       </div>
       <Outlet />
