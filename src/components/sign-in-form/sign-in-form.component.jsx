@@ -1,26 +1,14 @@
-import "./sign-in-form.styles.scss";
-
 import { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useDispatch } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import { logIn as logInReducer } from "../../features/user/userSlice";
+import { SIGNIN } from "../../apollo/mutations";
 
-const SIGNIN = gql`
-  mutation SignIn($email: String!, $password: String!) {
-    signIn(email: $email, password: $password) {
-      token
-      user {
-        id
-        name
-        email
-      }
-    }
-  }
-`;
+import "./sign-in-form.styles.scss";
 
 const defaultFormFeild = {
   email: "",
@@ -36,7 +24,6 @@ const LogIn = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormFeild({ ...formField, [name]: value });
   };
 
@@ -45,7 +32,10 @@ const LogIn = () => {
     signIn({
       variables: { email, password },
       onError: ({ message }) => alert(message) || reset(),
-      onCompleted: ({ signIn }) => dispatch(logInReducer({ ...signIn })),
+      onCompleted: ({ signIn }) => {
+        setFormFeild(defaultFormFeild);
+        dispatch(logInReducer({ ...signIn }));
+      },
     });
   };
 
@@ -57,7 +47,7 @@ const LogIn = () => {
         <FormInput
           type="email"
           name="email"
-          label="email"
+          label="Email"
           onChange={handleChange}
           value={email}
           required
@@ -66,7 +56,7 @@ const LogIn = () => {
         <FormInput
           type="password"
           name="password"
-          label="password"
+          label="Password"
           onChange={handleChange}
           value={password}
           required

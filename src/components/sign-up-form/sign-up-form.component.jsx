@@ -1,24 +1,14 @@
 import { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useDispatch } from "react-redux";
 
-import "./sign-up-form.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-import { logIn as logInReducer } from "../../features/user/userSlice";
 
-const SIGNUP = gql`
-  mutation SignUp($name: String!, $email: String!, $password: String!) {
-    signUp(name: $name, email: $email, password: $password) {
-      token
-      user {
-        id
-        name
-        email
-      }
-    }
-  }
-`;
+import { logIn as logInReducer } from "../../features/user/userSlice";
+import { SIGNUP } from "../../apollo/mutations";
+
+import "./sign-up-form.styles.scss";
 
 const defaultFormFeild = {
   displayName: "",
@@ -28,14 +18,14 @@ const defaultFormFeild = {
 };
 
 const SignUp = () => {
-  const [signUp, { loading }] = useMutation(SIGNUP);
+  const [signUp, { reset }] = useMutation(SIGNUP);
   const dispatch = useDispatch();
+
   const [formField, setFormFeild] = useState(defaultFormFeild);
   const { displayName, email, password, confirmPassword } = formField;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormFeild({ ...formField, [name]: value });
   };
 
@@ -44,7 +34,7 @@ const SignUp = () => {
     if (password === confirmPassword) {
       signUp({
         variables: { name: displayName, email, password },
-        onError: (error) => alert(error.message),
+        onError: ({ message }) => alert(message) || reset(),
         onCompleted: ({ signUp }) => {
           setFormFeild(defaultFormFeild);
           dispatch(logInReducer({ ...signUp }));
@@ -58,13 +48,13 @@ const SignUp = () => {
 
   return (
     <div className="sign-up-container">
-      <h2>Don't have and account?</h2>
+      <h2>Don't have an account?</h2>
       <span>Sign up with Email and Password</span>
       <form className="form-feild" onSubmit={handleSubmit}>
         <FormInput
           type="text"
           name="displayName"
-          label="display name"
+          label="Display name"
           onChange={handleChange}
           value={displayName}
           required
@@ -73,7 +63,7 @@ const SignUp = () => {
         <FormInput
           type="email"
           name="email"
-          label="email"
+          label="Email"
           onChange={handleChange}
           value={email}
           required
@@ -82,7 +72,7 @@ const SignUp = () => {
         <FormInput
           type="password"
           name="password"
-          label="password"
+          label="Password"
           onChange={handleChange}
           value={password}
           required
@@ -91,14 +81,13 @@ const SignUp = () => {
         <FormInput
           type="password"
           name="confirmPassword"
-          label="confirm password"
+          label="Confirm Password"
           onChange={handleChange}
           value={confirmPassword}
           required
         />
         <Button type="submit">Sign Up</Button>
       </form>
-      {!!loading && <p>loading...</p>}
     </div>
   );
 };
