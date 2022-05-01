@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../features/user/userSlice";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 import CrwnLogo from "../../assets/crown.svg?component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
@@ -9,6 +10,7 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   const user = useSelector((state) => state.user.user);
+  const isCartOpen = useSelector((state) => state.cart.isOpen);
   const dispatch = useDispatch();
 
   return (
@@ -32,6 +34,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </div>
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>
