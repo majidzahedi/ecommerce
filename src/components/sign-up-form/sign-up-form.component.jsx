@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
+import { useDispatch } from "react-redux";
+
 import "./sign-up-form.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+import { logIn as logInReducer } from "../../features/user/userSlice";
 
 const SIGNUP = gql`
   mutation SignUp($name: String!, $email: String!, $password: String!) {
     signUp(name: $name, email: $email, password: $password) {
       token
       user {
+        id
+        name
         email
       }
     }
@@ -24,6 +29,7 @@ const defaultFormFeild = {
 
 const SignUp = () => {
   const [signUp, { loading }] = useMutation(SIGNUP);
+  const dispatch = useDispatch();
   const [formField, setFormFeild] = useState(defaultFormFeild);
   const { displayName, email, password, confirmPassword } = formField;
 
@@ -39,7 +45,10 @@ const SignUp = () => {
       signUp({
         variables: { name: displayName, email, password },
         onError: (error) => alert(error.message),
-        onCompleted: () => setFormFeild(defaultFormFeild),
+        onCompleted: ({ signUp }) => {
+          setFormFeild(defaultFormFeild);
+          dispatch(logInReducer({ ...signUp }));
+        },
       });
     } else {
       alert("Password dose not match");

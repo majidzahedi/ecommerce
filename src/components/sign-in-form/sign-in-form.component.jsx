@@ -2,14 +2,20 @@ import "./sign-in-form.styles.scss";
 
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
+import { useDispatch } from "react-redux";
+
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+
+import { logIn as logInReducer } from "../../features/user/userSlice";
 
 const SIGNIN = gql`
   mutation SignIn($email: String!, $password: String!) {
     signIn(email: $email, password: $password) {
       token
       user {
+        id
+        name
         email
       }
     }
@@ -22,7 +28,9 @@ const defaultFormFeild = {
 };
 
 const LogIn = () => {
-  const [signIn, { loading, error, reset }] = useMutation(SIGNIN);
+  const [signIn, { reset }] = useMutation(SIGNIN);
+  const dispatch = useDispatch();
+
   const [formField, setFormFeild] = useState(defaultFormFeild);
   const { email, password } = formField;
 
@@ -37,6 +45,7 @@ const LogIn = () => {
     signIn({
       variables: { email, password },
       onError: ({ message }) => alert(message) || reset(),
+      onCompleted: ({ signIn }) => dispatch(logInReducer({ ...signIn })),
     });
   };
 
