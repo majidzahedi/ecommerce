@@ -1,7 +1,10 @@
 import "./product-card.styles.scss";
 import Button from "../button/button.component";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../features/cart/cartSlice";
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
   const { name, price, imageUrl } = product;
 
   return (
@@ -11,7 +14,12 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button buttonType="inverted">Add to card</Button>
+      <Button
+        buttonType="inverted"
+        onClick={(_) => dispatch(addProduct(product))}
+      >
+        Add to card
+      </Button>
     </div>
   );
 };
