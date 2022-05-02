@@ -1,17 +1,17 @@
 import "./checkoutItem.styles.scss";
 import { useDispatch } from "react-redux";
 import {
-  addProduct,
-  removeProduct,
+  addCartItem,
   removeCartItem,
+  clearCartItem,
 } from "../../features/cart/cartSlice";
 
 const handlers = (item) => {
   const dispatch = useDispatch();
   return {
-    addItem: () => dispatch(addProduct(item)),
-    removeItem: () => dispatch(removeProduct(item)),
-    clearItem: () => dispatch(removeCartItem(item)),
+    addItem: () => dispatch(addCartItem(item)),
+    removeItem: () => dispatch(removeCartItem(item)),
+    clearItem: () => dispatch(clearCartItem(item)),
   };
 };
 
