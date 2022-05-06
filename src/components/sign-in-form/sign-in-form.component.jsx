@@ -6,7 +6,7 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import { logIn as logInReducer } from "../../features/user/userSlice";
-import { SIGNIN } from "../../apollo/mutations";
+import { LOGIN } from "../../apollo/mutations";
 
 import "./sign-in-form.styles.scss";
 
@@ -16,7 +16,7 @@ const defaultFormFeild = {
 };
 
 const LogIn = () => {
-  const [signIn, { reset }] = useMutation(SIGNIN);
+  const [signIn, { reset }] = useMutation(LOGIN);
   const dispatch = useDispatch();
 
   const [formField, setFormFeild] = useState(defaultFormFeild);
@@ -32,9 +32,9 @@ const LogIn = () => {
     signIn({
       variables: { email, password },
       onError: ({ message }) => alert(message) || reset(),
-      onCompleted: ({ signIn }) => {
+      onCompleted: ({ logIn }) => {
         setFormFeild(defaultFormFeild);
-        dispatch(logInReducer({ ...signIn }));
+        dispatch(logInReducer({ ...logIn }));
       },
     });
   };
