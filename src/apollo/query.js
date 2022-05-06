@@ -11,3 +11,9 @@ export const GETPRODUCTS = gql`
     }
   }
 `;
+
+export const GETCATEGORIES = gql`
+  query GetCategories {
+    categories
+  }
+`;
