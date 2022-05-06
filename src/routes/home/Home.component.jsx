@@ -14,7 +14,7 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "sneakers",
+      title: "shoes",
       imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
     },
     {
