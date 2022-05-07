@@ -5,7 +5,7 @@ import { logOut } from "../../features/user/userSlice";
 
 import CartDropdown from "../../components/cart-dropdown/CartDropdown.component";
 import CrwnLogo from "../../assets/crown.svg?component";
-import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartIcon from "../../components/cart-icon/CartIcon.component";
 import {
   NavigationContainer,
   LogoContainer,
