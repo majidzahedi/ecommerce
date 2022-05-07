@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useDispatch } from "react-redux";
 
-import FormInput from "../form-input/form-input.component";
+import FormInput from "../form-input/FormInput.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { logIn as logInReducer } from "../../features/user/userSlice";
