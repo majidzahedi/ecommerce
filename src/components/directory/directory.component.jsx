@@ -1,5 +1,5 @@
 import "./directory.styles.scss";
-import DirectoryItem from "../directory-item/directory-item.component";
+import DirectoryItem from "../directory-item/DirectoryItem.component";
 
 const Directory = ({ categories }) => (
   <div className="directory-container">
