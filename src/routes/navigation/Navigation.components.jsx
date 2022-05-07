@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../features/user/userSlice";
 
-import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import CartDropdown from "../../components/cart-dropdown/CartDropdown.component";
 import CrwnLogo from "../../assets/crown.svg?component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import {
