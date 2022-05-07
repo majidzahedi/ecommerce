@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import FormInput from "../form-input/FormInput.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
@@ -17,6 +18,7 @@ const defaultFormFeild = {
 
 const LogIn = () => {
   const [signIn, { reset }] = useMutation(LOGIN);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [formField, setFormFeild] = useState(defaultFormFeild);
@@ -35,6 +37,7 @@ const LogIn = () => {
       onCompleted: ({ logIn }) => {
         setFormFeild(defaultFormFeild);
         dispatch(logInReducer({ ...logIn }));
+        navigate("/");
       },
     });
   };
