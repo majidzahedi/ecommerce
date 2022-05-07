@@ -1,12 +1,7 @@
-import LoadingIcon from "../../assets/loading.svg?component";
-import "./loading.scss";
+import { LoadingIcon } from "./loading.style";
 
 const Loading = () => {
-  return (
-    <div className="loading-icon">
-      <LoadingIcon />
-    </div>
-  );
+  return <LoadingIcon />;
 };
 
 export default Loading;

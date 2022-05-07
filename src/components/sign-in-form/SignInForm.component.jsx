@@ -8,7 +8,7 @@ import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { logIn as logInReducer } from "../../features/user/userSlice";
 import { LOGIN } from "../../apollo/mutations";
 
-import "./sign-in-form.styles.scss";
+import { SignInContainer, ButtonContainer } from "./SignInForm.styles.jsx";
 
 const defaultFormFeild = {
   email: "",
@@ -40,7 +40,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account </h2>
       <span>Sign in with your email and password</span>
       <form className="form-feild" onSubmit={handleSubmit}>
@@ -62,14 +62,14 @@ const LogIn = () => {
           required
         />
 
-        <div className="buttons-container">
+        <ButtonContainer>
           <Button type="submit">Log In</Button>
           <Button type="button" buttonType={BUTTON_TYPE_CLASSES.blue}>
             Forgot Password!
           </Button>
-        </div>
+        </ButtonContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 

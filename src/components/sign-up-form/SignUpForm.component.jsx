@@ -8,7 +8,7 @@ import Button from "../button/button.component";
 import { logIn as logInReducer } from "../../features/user/userSlice";
 import { SIGNUP } from "../../apollo/mutations";
 
-import "./sign-up-form.styles.scss";
+import { SignUpContainer } from "./SignUpForm.styles.jsx";
 
 const defaultFormFeild = {
   displayName: "",
@@ -47,7 +47,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with Email and Password</span>
       <form className="form-feild" onSubmit={handleSubmit}>
@@ -88,7 +88,7 @@ const SignUp = () => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

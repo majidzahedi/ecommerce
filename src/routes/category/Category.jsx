@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import ProductCard from "../../components/product-card/product-card.component";
 import { useQuery } from "@apollo/client";
 import { GETPRODUCTS } from "../../apollo/query.js";
-import "./category.styels.scss";
+
+import ProductCard from "../../components/product-card/ProductCard.component";
+import { CategoryTitle, CategoryContainer } from "./category.styles";
 
 const Category = () => {
   const { category } = useParams();
@@ -15,13 +16,13 @@ const Category = () => {
   });
   return (
     <>
-      <h2 className="category-title">{category.toUpperCase()}</h2>
-      <div className="category-container">
+      <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
+      <CategoryContainer>
         {data &&
           data.allProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-      </div>
+      </CategoryContainer>
     </>
   );
 };
