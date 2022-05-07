@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { useDispatch } from "react-redux";
 
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { logIn as logInReducer } from "../../features/user/userSlice";
 import { LOGIN } from "../../apollo/mutations";
@@ -64,7 +64,7 @@ const LogIn = () => {
 
         <div className="buttons-container">
           <Button type="submit">Log In</Button>
-          <Button type="button" buttonType="google">
+          <Button type="button" buttonType={BUTTON_TYPE_CLASSES.blue}>
             Forgot Password!
           </Button>
         </div>
