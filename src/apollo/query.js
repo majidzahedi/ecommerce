@@ -12,6 +12,19 @@ export const GETPRODUCTS = gql`
   }
 `;
 
+export const GETONEPRODUCT = gql`
+  query Product($id: Int!) {
+    product(id: $id) {
+      id
+      name
+      description
+      price
+      imageUrl
+      sold
+    }
+  }
+`;
+
 export const GETCATEGORIES = gql`
   query GetCategories {
     categories
