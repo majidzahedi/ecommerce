@@ -1,7 +1,7 @@
-import styled from "styled-component";
+import styled from "styled-components";
 
 import LoadingIconSvg from "../../assets/loading.svg?component";
 
 export const LoadingIcon = styled(LoadingIconSvg)`
-  margin-top: 100px;
+  margin-top: 400px;
 `;

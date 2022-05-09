@@ -1,4 +1,4 @@
-import { LoadingIcon } from "./loading.style";
+import { LoadingIcon } from "./loading.style.jsx";
 
 const Loading = () => {
   return <LoadingIcon />;

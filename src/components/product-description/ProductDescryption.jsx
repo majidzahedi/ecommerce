@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addCartItem } from "../../features/cart/cartSlice";
 
 import Button from "../button/button.component";
+import Loading from "../../components/loading/loading";
 import {
   ProductContainer,
   Product,
@@ -19,8 +20,8 @@ const ProductDescryption = () => {
     variables: { id: +id },
   });
 
-  if (error) <h1>Error</h1>;
-  if (loading) <h1>Loading</h1>;
+  if (error) return <h1>Error</h1>;
+  if (loading) return <Loading />;
 
   if (data) {
     const { name, description, imageUrl, price, sold } = data.product;

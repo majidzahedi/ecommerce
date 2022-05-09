@@ -4,6 +4,7 @@ import { GETPRODUCTS } from "../../apollo/query.js";
 
 import ProductCard from "../../components/product-card/ProductCard.component";
 import { CategoryTitle, CategoryContainer } from "./category.styles";
+import Loading from "../../components/loading/loading";
 
 const Category = () => {
   const { category } = useParams();
@@ -14,6 +15,9 @@ const Category = () => {
       filter: category,
     },
   });
+
+  if (loading) return <Loading />;
+
   return (
     <>
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>

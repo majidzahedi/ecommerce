@@ -12,8 +12,7 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 import store from "./store/store";
-
-import "./main.scss";
+import { GlobalStyle } from "./global.styles";
 
 const httpLink = new HttpLink({
   uri: "https://ecommerce-api-apollo1376.herokuapp.com/",
@@ -39,6 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ApolloProvider client={client}>
       <Provider store={store}>
         <BrowserRouter>
+          <GlobalStyle />
           <App />
         </BrowserRouter>
       </Provider>

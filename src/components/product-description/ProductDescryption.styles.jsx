@@ -9,6 +9,10 @@ export const ProductContainer = styled.div`
   padding: 24px;
   border-radius: 10px;
   height: 600px;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Image = styled.img`
@@ -16,6 +20,12 @@ export const Image = styled.img`
   width: 400px;
   height: 400px;
   align-self: center;
+
+  @media screen and (max-width: 800px) {
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 export const Product = styled.div`
@@ -23,5 +33,9 @@ export const Product = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: start;
+
+  @media screen and (max-width: 800px) {
+    align-items: center;
+  }
 `;
 export const ProductDescription = styled.div``;
