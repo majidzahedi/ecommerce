@@ -15,7 +15,9 @@ import store from "./store/store";
 
 import "./main.scss";
 
-const httpLink = new HttpLink({ uri: "http://localhost:4000" });
+const httpLink = new HttpLink({
+  uri: "https://ecommerce-api-apollo1376.herokuapp.com/",
+});
 
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem("auth_token");
