@@ -1,7 +1,3 @@
-# A little background on this project
-
-since i've been a way of coding for a long time i decided to chalenge my self with building a FullStack Ecommerce web application
-
 ## Key Features
 
 - Admin page with CRUD operation on Products
