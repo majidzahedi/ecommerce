@@ -5,7 +5,7 @@ since i've been a way of coding for a long time i decided to chalenge my self wi
 ## Key Features
 
 - Admin page with CRUD operation on Products
-- User authentication based on Auth0
+- User authentication based on jwt
 - Commenting and Rating system on each product
 - Realtime subscription
 
